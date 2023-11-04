@@ -1,18 +1,10 @@
 import Utils.ListNode;
 
+import java.util.NoSuchElementException;
+import java.util.Stack;
+
 public class EasyProblems {
     public static void main(String[] args) {
-        ListNode c = new ListNode(1, null);
-        ListNode b = new ListNode(2, c);
-        ListNode a = new ListNode(3, b);
-
-        ListNode z = new ListNode(2, null);
-        ListNode y = new ListNode(3, z);
-        ListNode x = new ListNode(1, y);
-
-        printLinkedList(a);
-        addTwoNumbers(a, x);
-        printLinkedList(a);
 
 
     }
@@ -20,6 +12,7 @@ public class EasyProblems {
     /**
      * 1. Two Sum
      * given an array and targer integer, return indices of two numbers that add to target
+     *
      * @param nums
      * @param target
      * @return indices [a,b]
@@ -40,30 +33,50 @@ public class EasyProblems {
 
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        while (l1.next != null && l2.next != null) {
-            int sum = l1.val + l2.val;
-            l1.val = sum;
-            if (sum > 9) {
-                int n = sum % 10;
-                l1.val = n;
-                l1.next.val += 1;
+        ListNode temp = l1;
+        while (l1 != null || l2 != null) {
+            int sum = 0;
+            if (l1 != null && l2 != null) {
+                sum = l1.val + l2.val;
+            } else if (l2 == null) {
+                sum = l1.val;
+            } else {
+
             }
+            if (sum > 9) {
+                int ones = sum % 10;
+                l1.val = ones;
+                if (l1.next != null) {
+                    l1.next.val += 1;
+                } else {
+                    l1.next = new ListNode(1, null);
+                }
+            } else {
+                l1.val = sum;
+            }
+            if (l1.next == null) {
+                l1.next = new ListNode(0);
+            }
+
             l1 = l1.next;
             l2 = l2.next;
+
+
         }
-        return l1;
+        return temp;
     }
 
 
     /**
      * 9. Palindrome Number
+     *
      * @param x
      * @return true or false if x reads the same from left to right and right to left
      */
     public static boolean isPalindrome(int x) {
         String s = Integer.toString(x);
         for (int i = 0; i < s.length() / 2; i++) {
-            if (s.charAt(i) != s.charAt( (s.length()-1) - i)) {
+            if (s.charAt(i) != s.charAt((s.length() - 1) - i)) {
                 return false;
             }
         }
@@ -79,6 +92,39 @@ public class EasyProblems {
         }
     }
 
+    /**
+     * 20. Valid Parentheses
+     * true : open brackets are closed by same type AND
+     * open brackets are closed in the correct order AND
+     * closing brackets are opened by same type
+     * @param s : string containing: '{', '}', '[', ']', '(', ')'
+     * @return
+     */
+    public static boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else if (c == ')' || c == '}' || c == ']') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                try {
+                    char left = stack.pop();
+                    if (left == '(' && c != ')' ||
+                            left == '[' && c != ']' ||
+                            left == '{' && c != '}') {
+                        return false;
+                    }
+                } catch (Exception e) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
 
 
 }
