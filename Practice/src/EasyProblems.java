@@ -40,21 +40,29 @@ public class EasyProblems {
     public static String sortVowels(String s) {
         char[] sArr = s.toCharArray();
         ArrayList<Character> vowels = new ArrayList<>();
-        Map<Character, Integer> vowelIndex = new HashMap<>();
+        char[] vowelsFound = new char[s.length()];
+        int vCounter = 0;
         Collections.addAll(vowels, 'a', 'e', 'i', 'o', 'u');
 
         //find all vowels
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (vowels.contains(Character.toLowerCase(c))) {
-                vowelIndex.put(c, i);
+                vowelsFound[vCounter] = c;
+                vCounter++;
             }
         }
 
-        //sort all vowels
-        TreeMap<Character, Integer> sorted = new TreeMap<>(vowelIndex);
-        //place vowels
-        
+        // sort vowels
+        for (int i=0; i < sArr.length-1; i++) {
+            int jMin = i;
+            for (int j=i+1; j < sArr.length; j++) {
+                if (sArr[j] < sArr[jMin]) {
+
+                }
+            }
+        }
+
 
         return s;
     }
