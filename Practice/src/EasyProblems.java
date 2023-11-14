@@ -31,39 +31,15 @@ public class EasyProblems {
         return null;
     }
 
-
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode temp = l1;
-        while (l1 != null || l2 != null) {
-            int sum = 0;
-            if (l1 != null && l2 != null) {
-                sum = l1.val + l2.val;
-            } else if (l2 == null) {
-                sum = l1.val;
-            } else {
-
-            }
-            if (sum > 9) {
-                int ones = sum % 10;
-                l1.val = ones;
-                if (l1.next != null) {
-                    l1.next.val += 1;
-                } else {
-                    l1.next = new ListNode(1, null);
-                }
-            } else {
-                l1.val = sum;
-            }
-            if (l1.next == null) {
-                l1.next = new ListNode(0);
-            }
-
-            l1 = l1.next;
-            l2 = l2.next;
-
-
-        }
-        return temp;
+    /**
+     * 2785. Sort Vowels in a String
+     * All consonants remain in their original places
+     * Vowels must be sorting in nondecreasing order of ASCII values
+     * @param s
+     * @return
+     */
+    public static String sortVowels(String s) {
+        return s;
     }
 
 
