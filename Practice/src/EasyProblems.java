@@ -1,7 +1,6 @@
 import Utils.ListNode;
 
-import java.util.NoSuchElementException;
-import java.util.Stack;
+import java.util.*;
 
 public class EasyProblems {
     public static void main(String[] args) {
@@ -39,6 +38,24 @@ public class EasyProblems {
      * @return
      */
     public static String sortVowels(String s) {
+        char[] sArr = s.toCharArray();
+        ArrayList<Character> vowels = new ArrayList<>();
+        Map<Character, Integer> vowelIndex = new HashMap<>();
+        Collections.addAll(vowels, 'a', 'e', 'i', 'o', 'u');
+
+        //find all vowels
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (vowels.contains(Character.toLowerCase(c))) {
+                vowelIndex.put(c, i);
+            }
+        }
+
+        //sort all vowels
+        TreeMap<Character, Integer> sorted = new TreeMap<>(vowelIndex);
+        //place vowels
+        
+
         return s;
     }
 
