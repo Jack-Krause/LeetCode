@@ -2,10 +2,12 @@ import Utils.ListNode;
 
 import java.util.*;
 
-public class EasyProblems {
+public class Problems {
     public static void main(String[] args) {
-
-
+        String exp = "aeiou";
+        String str = "uoiea";
+        String strAfter = sortVowels(str);
+        System.out.println(strAfter);
     }
 
     /**
@@ -54,17 +56,32 @@ public class EasyProblems {
         }
 
         // sort vowels
-        for (int i=0; i < sArr.length-1; i++) {
-            int jMin = i;
-            for (int j=i+1; j < sArr.length; j++) {
-                if (sArr[j] < sArr[jMin]) {
-
+        for (int i=0; i < vCounter-1; i++) {
+            int minIndex = i;
+            for (int j=i+1; j < vCounter; j++) {
+                if (vowelsFound[j] < vowelsFound[minIndex]) {
+                    minIndex = j;
                 }
+            }
+            char temp = vowelsFound[i];
+            vowelsFound[i] = vowelsFound[minIndex];
+            vowelsFound[minIndex] = temp;
+        }
+
+        //place vowels
+        String ret = "";
+        vCounter = 0;
+        for (int i = 0; i < sArr.length; i++) {
+            char c = sArr[i];
+            if (vowels.contains(Character.toLowerCase(c))) {
+                ret += vowelsFound[vCounter];
+                vCounter++;
+            } else {
+                ret += c;
             }
         }
 
-
-        return s;
+        return ret;
     }
 
 

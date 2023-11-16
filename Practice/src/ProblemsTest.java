@@ -2,7 +2,7 @@ import org.junit.Before;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EasyProblemsTest {
+class ProblemsTest {
     String vString1;
     String vString2;
     String vE1;
@@ -20,10 +20,10 @@ class EasyProblemsTest {
     @org.junit.jupiter.api.Test
     void sortVowels() {
         setup();
-        String out = EasyProblems.sortVowels(vString1);
-        assertEquals(out, vE1);
-        String out2 = EasyProblems.sortVowels(vString2);
-        assertEquals(out2, vE2);
+        String out = Problems.sortVowels(vString1);
+        assertEquals(vE1, out);
+        String out2 = Problems.sortVowels(vString2);
+        assertEquals(vE2, out2);
     }
 
 
