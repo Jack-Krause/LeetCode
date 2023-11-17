@@ -42,46 +42,27 @@ public class Problems {
     public static String sortVowels(String s) {
         char[] sArr = s.toCharArray();
         ArrayList<Character> vowels = new ArrayList<>();
-        char[] vowelsFound = new char[s.length()];
-        int vCounter = 0;
         Collections.addAll(vowels, 'a', 'e', 'i', 'o', 'u');
+        ArrayList<Character> found = new ArrayList<>();
+        ArrayList<Integer> index = new ArrayList<>();
 
         //find all vowels
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (vowels.contains(Character.toLowerCase(c))) {
-                vowelsFound[vCounter] = c;
-                vCounter++;
+                index.add(i);
+                found.add(c);
             }
         }
-
-        // sort vowels
-        for (int i=0; i < vCounter-1; i++) {
-            int minIndex = i;
-            for (int j=i+1; j < vCounter; j++) {
-                if (vowelsFound[j] < vowelsFound[minIndex]) {
-                    minIndex = j;
-                }
-            }
-            char temp = vowelsFound[i];
-            vowelsFound[i] = vowelsFound[minIndex];
-            vowelsFound[minIndex] = temp;
-        }
+        //sort vowels found
+        Collections.sort(found);
 
         //place vowels
-        String ret = "";
-        vCounter = 0;
-        for (int i = 0; i < sArr.length; i++) {
-            char c = sArr[i];
-            if (vowels.contains(Character.toLowerCase(c))) {
-                ret += vowelsFound[vCounter];
-                vCounter++;
-            } else {
-                ret += c;
-            }
+        for (int i = 0; i < found.size(); i++) {
+            sArr[index.get(i)] = found.get(i);
         }
 
-        return ret;
+        return new String(sArr);
     }
 
 
