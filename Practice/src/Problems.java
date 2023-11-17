@@ -54,6 +54,7 @@ public class Problems {
                 found.add(c);
             }
         }
+
         //sort vowels found
         Collections.sort(found);
 
