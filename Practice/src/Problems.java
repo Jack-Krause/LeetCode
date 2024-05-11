@@ -126,5 +126,19 @@ public class Problems {
         return stack.isEmpty();
     }
 
+    /**
+     * 857. (Hard) Minimum Cost to Hire K Workers
+     * Given n workers, we want to hire k exactly k workers where:
+     * 1. Each worker must be paid at least their minimum wage
+     * 2. Wage is proportional to quality for all workers
+     * @param quality
+     * @param wage
+     * @param k
+     * @return
+     */
+    public double minCostToHireWorkers(int[] quality, int[] wage, int k) {
+        return 0.0;
+    }
+
 
 }
